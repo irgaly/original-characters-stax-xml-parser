@@ -14,7 +14,10 @@ import javax.xml.stream.XMLInputFactory.*
 /**
  * preserve original characters XML StAX Parser
  */
-class OriginalCharactersStaxXmlParser(input: InputStream) : Closeable {
+class OriginalCharactersStaxXmlParser(
+    input: InputStream,
+    configure: ((factory: WstxInputFactory) -> Unit)? = null
+) : Closeable {
     private val originalReader: InputStreamReader
     private val reader: WstxEventReader
 
@@ -29,6 +32,7 @@ class OriginalCharactersStaxXmlParser(input: InputStream) : Closeable {
             setProperty(IS_COALESCING, true)
             setProperty(IS_REPLACING_ENTITY_REFERENCES, false)
             setProperty(IS_SUPPORTING_EXTERNAL_ENTITIES, false)
+            configure?.invoke(this)
         }.createXMLEventReader(cloneable) as WstxEventReader
     }
 
