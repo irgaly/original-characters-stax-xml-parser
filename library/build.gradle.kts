@@ -1,6 +1,10 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     kotlin("jvm")
     id("maven-publish")
+    id("signing")
+    id("org.jetbrains.dokka") version "1.6.10"
 }
 
 sourceSets.configureEach {
@@ -17,10 +21,52 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.1.0")
 }
 
-group = "io.github.irgaly.xml"
-version = "1.0.0"
-
 java {
     withSourcesJar()
     withJavadocJar()
+}
+
+val dokkaJavadoc by tasks.getting(DokkaTask::class)
+val javadocJar by tasks.getting(Jar::class) {
+    dependsOn(dokkaJavadoc)
+    from(dokkaJavadoc.outputDirectory)
+}
+
+signing {
+    sign(publishing.publications)
+}
+
+group = "io.github.irgaly.xml"
+version = "1.0.0"
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenCentral") {
+            from(components["java"])
+            artifactId = "original-characters-stax"
+            pom {
+                name.set(artifactId)
+                description.set("A Stax Parser Wrapper with original texts from input XML.")
+                url.set("https://github.com/irgaly/original-characters-stax-xml-parser")
+                developers {
+                    developer {
+                        id.set("irgaly")
+                        name.set("irgaly")
+                        email.set("irgaly@gmail.com")
+                    }
+                }
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                scm {
+                    connection.set("git@github.com:irgaly/original-characters-stax-xml-parser.git")
+                    developerConnection.set("git@github.com:irgaly/original-characters-stax-xml-parser.git")
+                    url.set("https://github.com/irgaly/original-characters-stax-xml-parser")
+                }
+            }
+        }
+    }
 }
