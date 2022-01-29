@@ -33,6 +33,7 @@ val javadocJar by tasks.getting(Jar::class) {
 }
 
 signing {
+    useInMemoryPgpKeys(System.getenv("SIGNING_PGP_KEY"), System.getenv("SIGNING_PGP_PASSWORD"))
     sign(publishing.publications)
 }
 
