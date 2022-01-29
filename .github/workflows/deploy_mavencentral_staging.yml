@@ -1,0 +1,21 @@
+# Open PR -> deploy to Maven Central Staging
+name: Deploy to Maven Central Staging
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, ready_for_review ]
+
+jobs:
+  deploy-mavencentral:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    env:
+      ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME_TOKEN }}
+      ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD_TOKEN }}
+      SIGNING_PGP_KEY: ${{ secrets.SIGNING_PGP_KEY }}
+      SIGNING_PGP_PASSWORD: ${{ secrets.SIGNING_PGP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Maven Central
+        run: |
+          ./gradlew publishToSonatype closeSonatypeStagingRepository
