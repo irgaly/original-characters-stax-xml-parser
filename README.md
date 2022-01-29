@@ -33,11 +33,15 @@ Add dependencies.
 
 ```kotlin
 dependencies {
-    implementation("io.github.irgaly.xml:original-characters-stax:1.0.0")
+  implementation("io.github.irgaly.xml:original-characters-stax:1.0.0")
 }
 ```
 
 Then use library!
+
+## Class Documents
+
+[There are KDoc references.](docs/index.md)
 
 ## OriginalCharactersStaxXmlParser class
 
