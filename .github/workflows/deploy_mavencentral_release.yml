@@ -15,7 +15,7 @@ jobs:
       SIGNING_PGP_KEY: ${{ secrets.SIGNING_PGP_KEY }}
       SIGNING_PGP_PASSWORD: ${{ secrets.SIGNING_PGP_PASSWORD }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy to Maven Central
         run: |
           ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
