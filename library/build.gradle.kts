@@ -17,7 +17,7 @@ tasks.withType<Test> {
 
 dependencies {
     api("com.fasterxml.woodstox:woodstox-core:6.2.8")
-    testImplementation("io.kotest:kotest-runner-junit5:5.1.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.2.2")
     testImplementation("io.kotest:kotest-assertions-core:5.2.2")
 }
 
