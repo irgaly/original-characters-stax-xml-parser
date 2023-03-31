@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm")
     id("maven-publish")
     id("signing")
-    id("org.jetbrains.dokka") version "1.6.10"
+    id("org.jetbrains.dokka") version "1.8.10"
 }
 
 sourceSets.configureEach {
