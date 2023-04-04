@@ -1,6 +1,8 @@
 # Android Studio
 local.properties
 
+.idea/kotlinc.xml
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,intellij,gradle
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,intellij,gradle
 
