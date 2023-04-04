@@ -1,3 +1,10 @@
+# v1.0.2 - 2023/04/04 JST
+
+* Maintenance update
+  * Kotlin 1.8.20
+  * Gradle 8.0.2
+  * woodstox-core 6.5.0
+
 # v1.0.1 - 2022/01/30
 
 ## Changes

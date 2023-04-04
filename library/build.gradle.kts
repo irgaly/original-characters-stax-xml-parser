@@ -39,7 +39,7 @@ signing {
 }
 
 group = "io.github.irgaly.xml"
-version = "1.0.1"
+version = libs.versions.library.version.get()
 
 publishing {
     publications {
