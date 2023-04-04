@@ -7,10 +7,6 @@ plugins {
     signing
 }
 
-sourceSets.configureEach {
-    java.srcDirs("src/$name/kotlin")
-}
-
 tasks.withType<Test> {
     useJUnitPlatform()
 }
