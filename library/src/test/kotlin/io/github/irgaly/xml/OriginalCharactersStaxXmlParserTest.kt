@@ -28,6 +28,7 @@ class OriginalCharactersStaxXmlParserTest : DescribeSpec({
 <surrogate>&#x1F6AD;</surrogate>
 <surrogate>a🚭a🚭a</surrogate>
 <ivs>${
+        @OptIn(ExperimentalUnsignedTypes::class)
         ubyteArrayOf(0xE9U, 0x82U, 0x8AU, 0xF3U, 0xA0U, 0x84U, 0x80U).toByteArray()
             .toString(Charsets.UTF_8)
     }</ivs>

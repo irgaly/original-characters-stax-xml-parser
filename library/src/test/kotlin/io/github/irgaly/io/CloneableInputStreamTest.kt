@@ -27,6 +27,8 @@ class CloneableInputStreamTest: DescribeSpec({
         it("sequential forks") {
             val source = byteArrayOf(0, 1, 2, 3, 4, 5).inputStream()
             val cloneable = CloneableInputStream(source)
+
+            @Suppress("UnnecessaryVariable")
             val original = cloneable
             original.read() shouldBe 0
             val fork1 = cloneable.fork()
@@ -40,6 +42,8 @@ class CloneableInputStreamTest: DescribeSpec({
         it("complex sequential forks") {
             val source = byteArrayOf(0, 1, 2, 3, 4, 5).inputStream()
             val cloneable = CloneableInputStream(source)
+
+            @Suppress("UnnecessaryVariable")
             val original = cloneable
             original.read() shouldBe 0
             val fork1 = cloneable.fork()
@@ -53,6 +57,8 @@ class CloneableInputStreamTest: DescribeSpec({
         it("original leads forks") {
             val source = byteArrayOf(0, 1, 2, 3, 4, 5).inputStream()
             val cloneable = CloneableInputStream(source)
+
+            @Suppress("UnnecessaryVariable")
             val original = cloneable
             val fork1 = cloneable.fork()
             original.readAllBytes() shouldBe byteArrayOf(0, 1, 2, 3, 4, 5)
@@ -61,6 +67,8 @@ class CloneableInputStreamTest: DescribeSpec({
         it("forks leads original") {
             val source = byteArrayOf(0, 1, 2, 3, 4, 5).inputStream()
             val cloneable = CloneableInputStream(source)
+
+            @Suppress("UnnecessaryVariable")
             val original = cloneable
             val fork1 = cloneable.fork()
             val fork2 = cloneable.fork()
@@ -71,6 +79,8 @@ class CloneableInputStreamTest: DescribeSpec({
         it("readBytes") {
             val source = byteArrayOf(0, 1, 2, 3, 4, 5).inputStream()
             val cloneable = CloneableInputStream(source)
+
+            @Suppress("UnnecessaryVariable")
             val original = cloneable
             val fork1 = cloneable.fork()
             original.read() shouldBe 0
