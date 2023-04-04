@@ -29,8 +29,13 @@ val javadocJar by tasks.getting(Jar::class) {
 }
 
 signing {
-    useInMemoryPgpKeys(System.getenv("SIGNING_PGP_KEY"), System.getenv("SIGNING_PGP_PASSWORD"))
-    sign(publishing.publications)
+    useInMemoryPgpKeys(
+        providers.environmentVariable("SIGNING_PGP_KEY").orNull,
+        providers.environmentVariable("SIGNING_PGP_PASSWORD").orNull
+    )
+    if (providers.environmentVariable("CI").isPresent) {
+        sign(extensions.getByType<PublishingExtension>().publications)
+    }
 }
 
 group = "io.github.irgaly.xml"
