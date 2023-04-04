@@ -1,10 +1,10 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    kotlin("jvm")
-    id("maven-publish")
-    id("signing")
-    id("org.jetbrains.dokka") version "1.6.10"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.dokka)
+    `maven-publish`
+    signing
 }
 
 sourceSets.configureEach {
