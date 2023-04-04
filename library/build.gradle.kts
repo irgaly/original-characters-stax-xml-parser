@@ -7,18 +7,14 @@ plugins {
     signing
 }
 
-sourceSets.configureEach {
-    java.srcDirs("src/$name/kotlin")
-}
-
 tasks.withType<Test> {
     useJUnitPlatform()
 }
 
 dependencies {
-    api("com.fasterxml.woodstox:woodstox-core:6.2.8")
-    testImplementation("io.kotest:kotest-runner-junit5:5.2.2")
-    testImplementation("io.kotest:kotest-assertions-core:5.2.2")
+    api(libs.fasterxml.woodstox)
+    testImplementation(libs.test.kotest.runner)
+    testImplementation(libs.test.kotest.assertions)
 }
 
 java {
@@ -33,8 +29,13 @@ val javadocJar by tasks.getting(Jar::class) {
 }
 
 signing {
-    useInMemoryPgpKeys(System.getenv("SIGNING_PGP_KEY"), System.getenv("SIGNING_PGP_PASSWORD"))
-    sign(publishing.publications)
+    useInMemoryPgpKeys(
+        providers.environmentVariable("SIGNING_PGP_KEY").orNull,
+        providers.environmentVariable("SIGNING_PGP_PASSWORD").orNull
+    )
+    if (providers.environmentVariable("CI").isPresent) {
+        sign(extensions.getByType<PublishingExtension>().publications)
+    }
 }
 
 group = "io.github.irgaly.xml"
