@@ -4,7 +4,7 @@ kotlin = "1.9.20"
 kotest = "5.8.0"
 
 [libraries]
-fasterxml-woodstox = { module = "com.fasterxml.woodstox:woodstox-core", version = "6.5.0" }
+fasterxml-woodstox = { module = "com.fasterxml.woodstox:woodstox-core", version = "6.6.2" }
 test-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 test-kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 
