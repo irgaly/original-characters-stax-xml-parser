@@ -47,26 +47,27 @@ publishing {
             from(components["java"])
             artifactId = "original-characters-stax"
             pom {
-                name.set(artifactId)
-                description.set("A Stax Parser Wrapper with original texts from input XML.")
-                url.set("https://github.com/irgaly/original-characters-stax-xml-parser")
+                name = artifactId
+                description = "A Stax Parser Wrapper with original texts from input XML."
+                url = "https://github.com/irgaly/original-characters-stax-xml-parser"
                 developers {
                     developer {
-                        id.set("irgaly")
-                        name.set("irgaly")
-                        email.set("irgaly@gmail.com")
+                        id = "irgaly"
+                        name = "irgaly"
+                        email = "irgaly@gmail.com"
                     }
                 }
                 licenses {
                     license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
                     }
                 }
                 scm {
-                    connection.set("git@github.com:irgaly/original-characters-stax-xml-parser.git")
-                    developerConnection.set("git@github.com:irgaly/original-characters-stax-xml-parser.git")
-                    url.set("https://github.com/irgaly/original-characters-stax-xml-parser")
+                    connection = "git@github.com:irgaly/original-characters-stax-xml-parser.git"
+                    developerConnection =
+                        "git@github.com:irgaly/original-characters-stax-xml-parser.git"
+                    url = "https://github.com/irgaly/original-characters-stax-xml-parser"
                 }
             }
         }
