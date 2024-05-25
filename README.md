@@ -33,7 +33,7 @@ Add dependencies.
 
 ```kotlin
 dependencies {
-  implementation("io.github.irgaly.xml:original-characters-stax:1.0.2")
+  implementation("io.github.irgaly.xml:original-characters-stax:1.1.0")
 }
 ```
 
