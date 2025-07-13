@@ -16,6 +16,10 @@ jobs:
       SIGNING_PGP_PASSWORD: ${{ secrets.SIGNING_PGP_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
+      - name: Set Staging version
+        run: |
+          sed -i -E "s/^library-version = \"(.*)\"$/library-version = \"\\1-pr${{ github.event.pull_request.number }}.${{ github.run_number }}.${{ github.run_attempt }}\"/g" gradle/libs.versions.toml
+          grep "^library-version" gradle/libs.versions.toml
       - name: Deploy to Maven Central
         run: |
           ./gradlew publishToSonatype closeSonatypeStagingRepository
