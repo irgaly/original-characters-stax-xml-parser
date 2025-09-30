@@ -15,7 +15,7 @@ jobs:
       SIGNING_PGP_KEY: ${{ secrets.SIGNING_PGP_KEY }}
       SIGNING_PGP_PASSWORD: ${{ secrets.SIGNING_PGP_PASSWORD }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set Staging version
         run: |
           sed -i -E "s/^library-version = \"(.*)\"$/library-version = \"\\1-pr${{ github.event.pull_request.number }}.${{ github.run_number }}.${{ github.run_attempt }}\"/g" gradle/libs.versions.toml
