@@ -10,6 +10,17 @@
         "patch"
       ],
       "enabled": false
+    },
+    {
+      "groupName": "Kotlin",
+      "matchPackageNames": [
+        "org.jetbrains.kotlin:*",
+        "org.jetbrains.kotlin.*"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "enabled": true
     }
   ]
 }
